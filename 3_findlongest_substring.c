@@ -1,13 +1,12 @@
 #include <stdio.h>
 #include <string.h>
 
-int lengthOfLongestSubstring(char *s)
-{
-	int i, max = 0, t = 0,left = 0;
-	int table[256] = {0};
+int lengthOfLongestSubstring(char* s) {
+   	int i, max = 0, t = 0,left = 0;
+	int table[128];
 	int len = strlen(s);
 
-	for(i = 0;i < 256; i++)
+	for(i = 0;i < 128; i++)
 		table[i] = -1;
 	for(i = 0; i < len; i++)
 	{
