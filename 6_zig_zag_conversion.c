@@ -23,7 +23,7 @@ char *convert(char *s, int numRows)
 			ss[2*numRows-b-2][a*(numRows-1)+b-numRows +1] = s[i];
 	}
 	for(i = 0; i < numRows; i++)
-		for(j = 0; j < 1024; j++)
+		for(j = 0; j < (len/key +1)*(numRows-1); j++)
 			if(ss[i][j] != 0)
 				s[step++] = ss[i][j];
 	return s;
