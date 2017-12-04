@@ -57,36 +57,30 @@ int search(int *a,int l, int r, int value)
 
 int** threeSum(int* nums, int numsSize, int* returnSize)
 {
-	int i, j, s, r, t = 0, m, n =0;
+	int i, j, s, r, t = 0;
 	int **p = (int **)malloc(sizeof(int*) * 50000);
 
 	quiksort(nums, 0, numsSize-1);
 
-	for(i = 0; i < numsSize && nums[i] < 0; i++)
+	for(i = 0; i < numsSize && nums[i] <= 0; i++)
 	{
+		if(i > 0 && nums[i] == nums[i-1])
+			continue;
 
 		for(j = i+1; j < numsSize; j++)
-		{		
+		{
+			if(j > i+1 && nums[j] == nums[j-1])
+				continue;
 			s = 0 - nums[i] - nums[j];
 			r = search(nums, j+1, numsSize-1, s);
-			printf("%d \n", r);
 			if(r != -1)
 			{
-				n = 0;
-				for(m = 0; m < t; m++)
-				{
-					if(p[m][0]==nums[i] && p[m][1]==nums[j] && p[m][2]==nums[r] )
-					{	n = 1;  break;}
-				}
-				if(n)
-					continue;
-
 				p[t]    = (int *)malloc(sizeof(int) * 3);
 				p[t][0] = nums[i];
 				p[t][1] = nums[j];
 				p[t][2] = nums[r];
 				t++;
-				printf("%d %d %d\n", nums[i], nums[j],nums[r]);
+				//printf("%d %d %d\n", nums[i], nums[j],nums[r]);
 			}
 
 		}
