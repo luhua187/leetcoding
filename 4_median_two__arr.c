@@ -4,10 +4,10 @@
 
 double findMedianSortedArrays(int* nums1, int nums1Size, int* nums2, int nums2Size) 
 {
-    int key = (nums1Size + nums2Size)/2+2;
-    int *p = (int *)malloc(sizeof(int) * key);
+    int t = (nums1Size + nums2Size);
+    int key = t/2 + 1;
+    int p[key];
     int i = 0,  m = 0, n = 0;
-    double ret = 0.0;
 
     while(m < nums1Size && n < nums2Size && i < key)
     {
@@ -21,9 +21,8 @@ double findMedianSortedArrays(int* nums1, int nums1Size, int* nums2, int nums2Si
     while(i < key && n < nums2Size)
     	p[i++] = nums2[n++];
 
-    int t = (nums1Size + nums2Size);
     if(t%2 == 0)
-    	return 1.0*(p[t/2-1]+p[t/2])/2;
+    	return (p[t/2-1]+p[t/2])/2.0;
     else
     	return p[t/2]*1.0;
 }
